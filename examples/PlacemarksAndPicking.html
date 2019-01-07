@@ -712,11 +712,6 @@
             var POPOVER = $(".POPOVER");
 
 
-
-            //make a function
-            //get the x and y value of the mouse
-            // if the object is a placemark then call the function with the popover located at the x and y
-
             /** The common pick-handling function. */
             var handlePick = function (o) {
                 /** The input argument is either an Event or a TapRecognizer. Both have the same properties for determining
@@ -744,12 +739,6 @@
                 var pickList = wwd.pick(wwd.canvasCoordinates(x, y));
                 console.log(pickList.objects.length);
 
-                // $(document).bind('mousemove', function(e){
-                //
-                //     $(".poppy").css({
-                //         left: e.clientX,
-                //         top: e.clientY
-                // });
 
                 if (pickList.objects.length > 0) {
 
@@ -797,13 +786,12 @@
             var otherModal = document.getElementById("myOtherModal");
             var otherSpan = document.getElementsByClassName("otherClose") [0];
 
-            // POPOVER.append(Poppy);
 
             var newHandlePick =  function (o) {
                 var newX = o.clientX,
-                    newY = o.clientY;
-
-
+                    newY = o.clientY,
+                    myX = o.pageX,
+                    myY = o.pageY;
 
                 var newRedrawRequired = newHighlightedItems.length > 0;
                 console.log(newHighlightedItems);
@@ -815,7 +803,6 @@
 
                 if (otherSpan.onclick = function () {
                     otherModal.style.display = "none";
-                    // POPOVER.style.display = "none";
 
                 });
                 newHighlightedItems = [];
@@ -833,36 +820,18 @@
                             newPickList.objects[newP].userObject.highlighted = true;
 
 
-
-                            // otherModal.style.display = "block";
-
                             POPOVER.popover("show");
-                            // $(".POPOVER").css({visibility: visible, })
-                            // POPOVER.style.display = "block";
 
-                            // newPlacemark.mouseover(function(){
-                                POPOVER.css({"top":newY, "left":newX})
-                            // });
+                            POPOVER.css({"top":myY, "left":myX})
                         }
 
                         else {
                             POPOVER.popover("hide");
-                            // POPOVER.style.display = "none";
                         }
 
                         newHighlightedItems.push(newPickList.objects[newP].userObject);
                     }
                 }
-
-                // var doPopover = function(newX, newY) {
-                //     POPOVER.style.left = newX;
-                //     POPOVER.style.top = newY;
-                // };
-                //
-                // if (newPlacemark.is(":hover")) {
-                //     doPopover(newX, newY);
-                // }
-
 
 
                 if (newRedrawRequired) {
@@ -933,10 +902,6 @@
             $(document).ready(function(){
                 $('[data-toggle="popover"]').popover();
             });
-
-
-
-            //identify whether placemark or not
 
         });
 
