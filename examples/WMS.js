@@ -68,15 +68,15 @@ requirejs(['./WorldWindShim',
             // Create the WMS Layer from the configuration object
             var wmsLayer = new WorldWind.WmsLayer(wmsConfig);
 
-            // Add the layers to WorldWind and update the layer manager
-            wwd.addLayer(wmsLayer);
-            layerManager.synchronizeLayerList();
-        };
+                // Add the layers to WorldWind and update the layer manager
+                wwd.addLayer(wmsLayer);
+                layerManager.synchronizeLayerList();
+            };
 
-        // Called if an error occurs during WMS Capabilities document retrieval
-        var logError = function (jqXhr, text, exception) {
-            console.log("There was a failure retrieving the capabilities document: " + text + " exception: " + exception);
-        };
+            // Called if an error occurs during WMS Capabilities document retrieval
+            var logError = function (jqXhr, text, exception) {
+                console.log("There was a failure retrieving the capabilities document: " + text + " exception: " + exception);
+            };
 
         $.get(serviceAddress).done(createLayer).fail(logError);
 

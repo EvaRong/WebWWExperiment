@@ -372,7 +372,21 @@
                                 <a href="#" class="toggle">Custom Placemarks</a>
                                 <div class="inner">
                                     <p>
-                                        Toggle Custome Placemarks
+                                        Toggle Custom Placemarks
+                                        <br>
+                                        <label class = "switch">
+                                            <input type="checkbox">
+                                            <span class = "slider"></span>
+                                        </label>
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a href="#" class="toggle">Average Surface Temp</a>
+                                <div class="inner">
+                                    <p>
+                                        Toggle Average Surface Temperature
                                         <br>
                                         <label class = "switch">
                                             <input type="checkbox">
@@ -387,20 +401,6 @@
                                 <div class="inner">
                                     <p>
                                         Toggle Placemarks
-                                        <br>
-                                        <label class = "switch">
-                                            <input type="checkbox">
-                                            <span class = "slider"></span>
-                                        </label>
-                                    </p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <a href="#" class="toggle">Heat Map</a>
-                                <div class="inner">
-                                    <p>
-                                        Toggle Heat Map
                                         <br>
                                         <label class = "switch">
                                             <input type="checkbox">
@@ -427,8 +427,6 @@
         </div>
     </div>
 </div>
-
-<!--<div id="2poppy" class="poppy" data-toggle="popover" data-trigger="hover" title="hello" data-content="it's me!"> Yellow</div>-->
 
 
 <div id="myModal" class="modal">
@@ -649,6 +647,12 @@
                 wwd.addLayer(wmsLayer);
                 layerManager.synchronizeLayerList();
             };
+
+            /** Create new Layer for Custom Placemark */
+            var AverageSurfaceTemp = new WorldWind.RenderableLayer("Average Surface Temp");
+
+            /** Add Layer to System */
+            wwd.addLayer(AverageSurfaceTemp);
 
             // Called if an error occurs during WMS Capabilities document retrieval
             var logError = function (jqXhr, text, exception) {
