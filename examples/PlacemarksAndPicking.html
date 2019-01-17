@@ -504,7 +504,7 @@
                 /** Imagery layers. */
                 {layer: new WorldWind.BMNGLayer(), enabled: true},
                 {layer: new WorldWind.BMNGLandsatLayer(), enabled: false},
-                {layer: new WorldWind.BingAerialWithLabelsLayer(null), enabled: true},
+                {layer: new WorldWind.BingAerialWithLabelsLayer(null), enabled: false},
                 /** Add atmosphere layer on top of all base layers. */
                 {layer: new WorldWind.AtmosphereLayer(), enabled: true},
                 /** WorldWindow UI layers. */
@@ -648,7 +648,7 @@
                 layerManager.synchronizeLayerList();
             };
 
-            /** Create new Layer for Custom Placemark */
+            /** Create new Layer for Heat Map */
             var AverageSurfaceTemp = new WorldWind.RenderableLayer("Average Surface Temp");
 
             /** Add Layer to System */
@@ -911,6 +911,7 @@
             }
 
             Bob[1].defaultChecked = false;
+            Bob[2].defaultChecked = false;
 
             Bob.on('click', function() {
                 console.log("checked");
